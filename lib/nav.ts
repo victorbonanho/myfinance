@@ -1,6 +1,5 @@
 import {
   CalendarClock,
-  LayoutDashboard,
   PiggyBank,
   Receipt,
   TrendingUp,
@@ -21,8 +20,7 @@ export const nav: NavGroup[] = [
   {
     label: "Geral",
     items: [
-      { title: "Dashboard", href: "/", icon: LayoutDashboard },
-      { title: "Despesas fixas", href: "/despesas", icon: CalendarClock },
+      { title: "Despesas fixas", href: "/", icon: CalendarClock },
     ],
   },
   {
