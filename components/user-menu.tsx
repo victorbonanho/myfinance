@@ -1,9 +1,11 @@
 import { LogOut } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { connection } from "next/server";
+import { SubmitButton } from "@/components/submit-button";
 import { createClient } from "@/lib/supabase/server";
 import { signOutAction } from "@/app/actions";
 
 export async function UserMenu() {
+  await connection();
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
   const user = data.user;
@@ -27,9 +29,9 @@ export async function UserMenu() {
         <span className="truncate text-muted-foreground">{user.email}</span>
       </div>
       <form action={signOutAction} className="group-data-[collapsible=icon]:hidden">
-        <Button type="submit" variant="ghost" size="icon" title="Sair" aria-label="Sair">
+        <SubmitButton variant="ghost" size="icon" title="Sair" aria-label="Sair">
           <LogOut />
-        </Button>
+        </SubmitButton>
       </form>
     </div>
   );

@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import { Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { SubmitButton } from "@/components/submit-button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
@@ -94,17 +94,17 @@ async function Expenses({ searchParams }: { searchParams: PageProps<"/despesas">
                           <input type="hidden" name="id" value={i.id} />
                           <input type="hidden" name="month" value={month} />
                           <input type="hidden" name="paid" value={String(!i.payment)} />
-                          <Button type="submit" size="sm" variant={i.payment ? "outline" : "default"}>
+                          <SubmitButton size="sm" variant={i.payment ? "outline" : "default"}>
                             {i.payment ? "Desfazer" : "Marcar pago"}
-                          </Button>
+                          </SubmitButton>
                         </form>
                         <ExpenseDialog month={month} monthLabel={label} expense={i} />
                         <form action={deleteExpenseAction}>
                           <input type="hidden" name="id" value={i.id} />
                           <input type="hidden" name="month" value={month} />
-                          <Button type="submit" size="icon" variant="ghost" title="Remover a partir deste mês">
+                          <SubmitButton size="icon" variant="ghost" title="Remover a partir deste mês">
                             <Trash2 />
-                          </Button>
+                          </SubmitButton>
                         </form>
                       </div>
                     </TableCell>
